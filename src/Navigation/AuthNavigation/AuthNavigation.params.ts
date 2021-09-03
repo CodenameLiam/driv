@@ -1,9 +1,9 @@
-import {StackNavigationProp} from '@react-navigation/stack';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 export type AuthParams = {
-  Login: undefined;
-  Create: undefined;
-  Forgot: undefined;
+	Login: undefined;
+	Create: undefined;
+	Forgot: undefined;
 };
 
 // Auth Navigation Types

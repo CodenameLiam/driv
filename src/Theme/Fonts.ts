@@ -7,17 +7,18 @@ interface FontProps {
 }
 
 export const fontFamily = 'Poppins';
-export const fontWeight = '600';
-export const fontHeaderWeight = '700';
+export const fontWeight = '500';
+export const fontHeaderWeight = '600';
 
 export const BodyFont = styled.Text<FontProps>`
 	font-weight: ${fontWeight};
 	font-family: ${fontFamily};
-	font-size: ${Responsive.hpx(1.75)};
+	font-size: ${Responsive.hpx(2)};
 	color: ${props => props.colour ?? Colours.dark};
 `;
 
 export const TitleFont = styled(BodyFont)`
+	margin-left: ${Responsive.hpx(1)};
 	font-size: ${Responsive.hpx(3)};
 	font-weight: ${fontHeaderWeight};
 `;
