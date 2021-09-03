@@ -18,7 +18,7 @@ const CreateScreen: FC = () => {
 			<ScrollView contentContainerStyle={Full} keyboardShouldPersistTaps="handled" scrollEnabled={false}>
 				<Styles.Container>
 					<Styles.TitleContainer>
-						<Icon family="fontawesome5" name="car" colour={Colours.dark} size={24} />
+						<Icon family="fontawesome5" name="car" colour={Colours.primary} size={24} />
 						<TitleFont>Drive</TitleFont>
 					</Styles.TitleContainer>
 

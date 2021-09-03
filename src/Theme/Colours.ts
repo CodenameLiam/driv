@@ -4,9 +4,8 @@ const Colours = {
 	pink: '#F62D7B',
 	green: '#27D8BF',
 	grey: '#e3e3e8',
-	light: '#2A316E',
-	mid: '#20255A',
-	dark: '#1B1F4B',
+	secondary: '#2A316E',
+	primary: '#1B1F4B',
 };
 
 export default Colours;

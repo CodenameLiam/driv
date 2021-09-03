@@ -30,7 +30,7 @@ export const Input = styled.TextInput`
 	font-weight: ${fontWeight};
 	font-family: ${fontFamily};
 	font-size: ${Responsive.hpx(2)};
-	color: ${Colours.dark};
+	color: ${Colours.primary};
 `;
 
 export const IconContainer = styled.View`

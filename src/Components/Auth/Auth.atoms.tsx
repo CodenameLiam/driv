@@ -16,7 +16,7 @@ export const Eye: FC<EyeProps> = ({ open, onPress }) => (
 			family="feather"
 			name={open ? 'eye' : 'eye-off'}
 			size={22}
-			colour={Colours.dark}
+			colour={Colours.primary}
 			style={{ marginLeft: Responsive.h(1) }}
 		/>
 	</TouchableOpacity>

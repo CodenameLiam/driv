@@ -16,7 +16,7 @@ const Button: FC<ButtonProps> = ({ text, fullWidth, disabled, ...rest }) => {
 		<Styles.Base fullWidth={fullWidth} disabled={disabled} {...rest}>
 			<LinearGradient
 				style={[StyleSheet.absoluteFill, { opacity: disabled ? 0.5 : 1 }]}
-				colors={[Colours.light, Colours.dark]}
+				colors={[Colours.secondary, Colours.primary]}
 				start={{ x: 0, y: 0 }}
 				end={{ x: 1, y: 0 }}
 			/>

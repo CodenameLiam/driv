@@ -14,7 +14,7 @@ export const BodyFont = styled.Text<FontProps>`
 	font-weight: ${fontWeight};
 	font-family: ${fontFamily};
 	font-size: ${Responsive.hpx(2)};
-	color: ${props => props.colour ?? Colours.dark};
+	color: ${props => props.colour ?? Colours.primary};
 `;
 
 export const TitleFont = styled(BodyFont)`
