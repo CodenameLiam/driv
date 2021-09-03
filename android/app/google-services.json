@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "291287569224",
+    "project_id": "drive-70631",
+    "storage_bucket": "drive-70631.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291287569224:android:547f53a6d3c112ed13d97d",
+        "android_client_info": {
+          "package_name": "com.liam.drive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291287569224-49vj6val8t5bn70214tueanih7sks54v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKw-npyg97Lfk_H3N2JVlr8gJgVdlJv1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "291287569224-49vj6val8t5bn70214tueanih7sks54v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

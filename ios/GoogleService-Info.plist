@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>291287569224-b87ta40uuv48duv7lcn7j96lh4cmantd.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.291287569224-b87ta40uuv48duv7lcn7j96lh4cmantd</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB6RWUN7LViVPYP3HvV-AS-85yDkTWTzjY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>291287569224</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.liam.drive</string>
+	<key>PROJECT_ID</key>
+	<string>drive-70631</string>
+	<key>STORAGE_BUCKET</key>
+	<string>drive-70631.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:291287569224:ios:c93ee980feb2ed8613d97d</string>
+</dict>
+</plist>
