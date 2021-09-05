@@ -64,7 +64,7 @@ export const Button = css`
 // Other containers
 // ---------------------------------------------------------------
 export const ForgotContainer = styled.TouchableOpacity`
-	margin-top: ${Responsive.hpx(2)};
+	margin: ${Responsive.hpx(2)} 0px;
 `;
 
 export const BottomTextContainer = styled.TouchableOpacity`

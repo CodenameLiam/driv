@@ -13,6 +13,7 @@ import { CreateNavProps } from 'Navigation/AuthNavigation/AuthNavigation.params'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Responsive from 'Utils/Responsive';
 import Loading from 'Components/Loading/Loading';
+import SocialAuth from 'Components/SocialAuth/SocialAuth';
 
 const CreateScreen: FC = () => {
 	const emailRef = useRef<TextInput>(null);
@@ -92,6 +93,12 @@ const CreateScreen: FC = () => {
 						onPress={handleCreate}
 						disabled={Object.values(valid).some(value => !value)}
 					/>
+
+					<Styles.ForgotContainer disabled>
+						<SubFont>Or</SubFont>
+					</Styles.ForgotContainer>
+
+					<SocialAuth />
 
 					<Styles.BottomTextContainer onPress={() => navigation.navigate('Login')}>
 						<SubFont>Already have an account? </SubFont>
