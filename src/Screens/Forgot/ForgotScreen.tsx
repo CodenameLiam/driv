@@ -1,27 +1,19 @@
-import React, { FC, useCallback, useMemo, useState } from 'react';
+import React, { FC } from 'react';
 import { SafeAreaView, ScrollView } from 'react-native';
-import { TitleFont, SubFontBold, SubFont } from 'Theme/Fonts';
+import { SubFont, TitleFont } from 'Theme/Fonts';
 import { Full } from 'Theme/Global';
 import * as Styles from 'Components/Auth/Auth.styles';
 import * as Atoms from 'Components/Auth/Auth.atoms';
 import Button from 'Components/Button/Button';
-import { useNavigation } from '@react-navigation/core';
-import { ForgotNavProps } from 'Navigation/AuthNavigation/AuthNavigation.params';
-import auth from '@react-native-firebase/auth';
-import { Snack } from 'Components/Snack/Snack';
+import useReset from 'Hooks/useReset';
+import Loading from 'Components/Loading/Loading';
 
 const ForgotScreen: FC = () => {
-	const navigation = useNavigation<ForgotNavProps>();
-	const [email, setEmail] = useState('');
-	const valid = useMemo(() => email.length > 0, [email]);
-
-	const handleLogin = useCallback(async () => {
-		await auth().sendPasswordResetEmail(email);
-		Snack.success('Reset password link sent');
-	}, [email]);
+	const { valid, setEmail, handleReset, showSpinner } = useReset();
 
 	return (
 		<SafeAreaView style={Full}>
+			<Loading visible={showSpinner} />
 			<ScrollView contentContainerStyle={Full} keyboardShouldPersistTaps="handled" scrollEnabled={false}>
 				<Styles.Container>
 					<Styles.BackContainer>
@@ -33,15 +25,19 @@ const ForgotScreen: FC = () => {
 					</Styles.TitleContainer>
 
 					<Styles.InputContainer>
-						<Styles.Input placeholder="Email" onChangeText={setEmail} />
+						<Styles.Input
+							autoCapitalize="none"
+							placeholder="Email"
+							onChangeText={setEmail}
+							returnKeyType="send"
+							onSubmitEditing={handleReset}
+						/>
 					</Styles.InputContainer>
 
-					<Button style={Styles.Button} text="Send" fullWidth onPress={handleLogin} disabled={!valid} />
-
-					<Styles.BottomTextContainer onPress={() => navigation.navigate('Create')}>
-						<SubFont>New to Drive? </SubFont>
-						<SubFontBold>Sign up</SubFontBold>
-					</Styles.BottomTextContainer>
+					<Button style={Styles.Button} text="Send" fullWidth onPress={handleReset} disabled={!valid} />
+					<Styles.ForgotContainer disabled>
+						<SubFont>We'll email you a link to reset your password</SubFont>
+					</Styles.ForgotContainer>
 				</Styles.Container>
 			</ScrollView>
 		</SafeAreaView>

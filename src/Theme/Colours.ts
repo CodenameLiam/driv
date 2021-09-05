@@ -11,6 +11,7 @@ const Colours = {
 	white: '#ffffff',
 	lightPurple: '#2A316E',
 	darkPurple: '#1B1F4B',
+	overlay: '#00000080',
 };
 
 export default Colours;

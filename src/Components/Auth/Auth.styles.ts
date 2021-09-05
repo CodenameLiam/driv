@@ -18,7 +18,8 @@ export const Container = styled.View`
 export const TitleContainer = styled.View`
 	flex-direction: row;
 	align-items: center;
-	margin: ${Responsive.hpx(5)} 0px;
+	margin-top: ${Responsive.hpx(10)};
+	margin-bottom: ${Responsive.hpx(6)};
 `;
 
 export const TitleIcon = css`
@@ -74,6 +75,6 @@ export const BottomTextContainer = styled.TouchableOpacity`
 
 export const BackContainer = styled.View`
 	position: absolute;
-	left: ${Responsive.hpx(2)};
-	top: ${Responsive.hpx(2)};
+	left: ${Responsive.hpx(3)};
+	top: ${Responsive.hpx(3)};
 `;

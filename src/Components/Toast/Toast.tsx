@@ -13,7 +13,6 @@ const ToastContainer = styled.View<ToastContainerProps>`
 	position: relative;
 	overflow: hidden;
 	width: 90%;
-	height: ${Responsive.hpx(6)};
 	border-radius: ${Responsive.hpx(1)};
 	flex-direction: row;
 	align-items: center;
@@ -27,14 +26,15 @@ const ToastHighlight = styled.View<ToastContainerProps>`
 	left: 0;
 	top: 0;
 	height: 100%;
-	width: ${Responsive.hpx(2)};
+	width: ${Responsive.hpx(1.5)};
 `;
 
 const ToastText = styled.Text<ToastContainerProps>`
 	font-weight: 600;
 	font-family: ${fontFamily};
 	color: ${({ colour }) => colour};
-	padding-left: ${Responsive.hpx(2)};
+	padding: ${Responsive.hpx(1)};
+	padding-left: ${Responsive.hpx(1.5)};
 `;
 
 export const ToastConfig = {

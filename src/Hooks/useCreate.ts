@@ -11,12 +11,14 @@ interface ValidAccount {
 }
 
 interface UseCreateAccount {
+	showSpinner: boolean;
 	valid: ValidAccount;
 	handleChange: (value: string, action: 'name' | 'email' | 'password') => void;
 	handleCreate: () => Promise<void>;
 }
 
-const useCreateAccount = (): UseCreateAccount => {
+const useCreate = (): UseCreateAccount => {
+	const [showSpinner, setShowSpinner] = useState(false);
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -44,14 +46,16 @@ const useCreateAccount = (): UseCreateAccount => {
 
 	const handleCreate = useCallback(async () => {
 		try {
+			setShowSpinner(true);
 			await auth().createUserWithEmailAndPassword(email, password);
 			await auth().currentUser?.updateProfile({ displayName: name });
 		} catch (error) {
 			error instanceof Error && Snack.error(error.message);
+			setShowSpinner(false);
 		}
 	}, [email, name, password]);
 
-	return { valid: valid, handleChange, handleCreate };
+	return { showSpinner, valid, handleChange, handleCreate };
 };
 
-export default useCreateAccount;
+export default useCreate;
