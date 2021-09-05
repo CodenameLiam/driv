@@ -12,6 +12,16 @@ const Colours = {
 	lightPurple: '#2A316E',
 	darkPurple: '#1B1F4B',
 	overlay: '#00000080',
+
+	Greys: {
+		GREY0: '#f4f4f4',
+		GREY1: '#dddddd',
+		GREY2: '#c5c5c5',
+		GREY3: '#b3b3b3',
+		GREY4: '#6f6f6f',
+		GREY5: '#474747',
+		GREY6: '#222222',
+	},
 };
 
 export default Colours;

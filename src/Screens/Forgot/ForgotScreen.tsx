@@ -7,6 +7,7 @@ import * as Atoms from 'Components/Auth/Auth.atoms';
 import Button from 'Components/Button/Button';
 import useReset from 'Hooks/useReset';
 import Loading from 'Components/Loading/Loading';
+import Colours from 'Theme/Colours';
 
 const ForgotScreen: FC = () => {
 	const { valid, setEmail, handleReset, showSpinner } = useReset();
@@ -28,6 +29,7 @@ const ForgotScreen: FC = () => {
 						<Styles.Input
 							autoCapitalize="none"
 							placeholder="Email"
+							placeholderTextColor={Colours.Greys.GREY3}
 							onChangeText={setEmail}
 							returnKeyType="send"
 							onSubmitEditing={handleReset}
@@ -36,7 +38,7 @@ const ForgotScreen: FC = () => {
 
 					<Button style={Styles.Button} text="Send" fullWidth onPress={handleReset} disabled={!valid} />
 					<Styles.ForgotContainer disabled>
-						<SubFont>We'll email you a link to reset your password</SubFont>
+						<SubFont>We'll email you a link to reset your password.</SubFont>
 					</Styles.ForgotContainer>
 				</Styles.Container>
 			</ScrollView>

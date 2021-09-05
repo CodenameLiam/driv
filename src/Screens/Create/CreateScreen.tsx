@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useCallback, useRef, useState } from 'react';
 import { SafeAreaView, TextInput } from 'react-native';
 import Colours from 'Theme/Colours';
 import { SubFont, SubFontBold, TitleFont } from 'Theme/Fonts';
@@ -14,6 +14,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import Responsive from 'Utils/Responsive';
 import Loading from 'Components/Loading/Loading';
 import SocialAuth from 'Components/SocialAuth/SocialAuth';
+import appleAuth from '@invertase/react-native-apple-authentication';
 
 const CreateScreen: FC = () => {
 	const emailRef = useRef<TextInput>(null);
@@ -24,12 +25,30 @@ const CreateScreen: FC = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const { showSpinner, valid, handleChange, handleCreate } = useCreate();
 
+	// const onApplePress = useCallback(async () => {
+	// 	const appleAuthRequestResponse = await appleAuth.performRequest({
+	// 		requestedOperation: appleAuth.Operation.LOGIN,
+	// 		requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
+	// 	});
+
+	// 	if (!appleAuthRequestResponse.identityToken) {
+	// 		throw 'Apple Sign-In failed - no identify token returned';
+	// 	}
+
+	// 	// Create a Firebase credential from the response
+	// 	const { identityToken, nonce } = appleAuthRequestResponse;
+	// 	const appleCredential = auth.AppleAuthProvider.credential(identityToken, nonce);
+
+	// 	// Sign the user in with the credential
+	// 	return auth().signInWithCredential(appleCredential);
+	// }, []);
+
 	return (
 		<SafeAreaView style={Full}>
 			<Loading visible={showSpinner} />
 			<KeyboardAwareScrollView
 				ref={scrollRef}
-				onKeyboardWillShow={() => scrollRef.current?.scrollToPosition(0, Responsive.h(8))}
+				onKeyboardWillShow={() => scrollRef.current?.scrollToPosition(0, Responsive.h(7))}
 				contentContainerStyle={Full}
 				keyboardShouldPersistTaps="handled"
 				scrollEnabled={false}
@@ -49,6 +68,7 @@ const CreateScreen: FC = () => {
 					<Styles.InputContainer>
 						<Styles.Input
 							placeholder="Name"
+							placeholderTextColor={Colours.Greys.GREY3}
 							returnKeyType="next"
 							blurOnSubmit={false}
 							onChangeText={e => handleChange(e, 'name')}
@@ -61,6 +81,7 @@ const CreateScreen: FC = () => {
 						<Styles.Input
 							ref={emailRef}
 							placeholder="Email"
+							placeholderTextColor={Colours.Greys.GREY3}
 							keyboardType="email-address"
 							autoCapitalize="none"
 							returnKeyType="next"
@@ -75,6 +96,7 @@ const CreateScreen: FC = () => {
 						<Styles.Input
 							ref={passwordRef}
 							placeholder="Password (6+ Characters)"
+							placeholderTextColor={Colours.Greys.GREY3}
 							returnKeyType="go"
 							secureTextEntry={!showPassword}
 							onChangeText={e => handleChange(e, 'password')}

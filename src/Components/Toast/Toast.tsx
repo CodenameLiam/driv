@@ -34,7 +34,7 @@ const ToastText = styled.Text<ToastContainerProps>`
 	font-family: ${fontFamily};
 	color: ${({ colour }) => colour};
 	padding: ${Responsive.hpx(1)};
-	padding-left: ${Responsive.hpx(1.5)};
+	padding-left: ${Responsive.hpx(2)};
 `;
 
 export const ToastConfig = {

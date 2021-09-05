@@ -6,18 +6,26 @@ import Google from 'Assets/Logos/Google.svg';
 import Facebook from 'Assets/Logos/Facebook.svg';
 import Twitter from 'Assets/Logos/Twitter.svg';
 import Responsive from 'Utils/Responsive';
+import useSocialAuth from 'Hooks/useSocialAuth';
+import Loading from 'Components/Loading/Loading';
 
 const AppleDimensions = Responsive.h(2.5);
 const GoogleDimensions = Responsive.h(3);
 const FacebookDimensions = Responsive.h(3);
 const TwitterDimensions = Responsive.h(2.5);
 
-interface SocialAuthProps {}
-
 const SocialAuth: FC = () => {
+	const { showSpinner, handleSocialPress } = useSocialAuth();
+
 	return (
 		<Styles.Container>
-			<Styles.SocialContainer dimensions={Responsive.hpx(6)} colour="#DADADA">
+			<Loading visible={showSpinner} />
+
+			<Styles.SocialContainer
+				dimensions={Responsive.hpx(6)}
+				colour="#000"
+				onPress={() => handleSocialPress('apple')}
+			>
 				<Apple width={AppleDimensions} height={AppleDimensions} style={Styles.Apple} />
 			</Styles.SocialContainer>
 

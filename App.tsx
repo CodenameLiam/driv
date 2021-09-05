@@ -4,10 +4,12 @@ import RootNavigation from 'Navigation/RootNavigation/RootNavigation';
 import AppContextProvider from 'Context/AppContext';
 import Toast from 'react-native-toast-message';
 import ToastConfig from 'Components/Toast/Toast';
+import { StatusBar } from 'react-native';
 
 const App: FC = () => {
 	return (
 		<AppContextProvider>
+			<StatusBar barStyle="dark-content" />
 			<NavigationContainer>
 				<RootNavigation />
 			</NavigationContainer>
