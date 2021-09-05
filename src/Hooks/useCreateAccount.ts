@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import auth from '@react-native-firebase/auth';
+import { Snack } from 'Components/Snack/Snack';
 
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -46,7 +47,7 @@ const useCreateAccount = (): UseCreateAccount => {
 			await auth().createUserWithEmailAndPassword(email, password);
 			await auth().currentUser?.updateProfile({ displayName: name });
 		} catch (error) {
-			console.error(error);
+			error instanceof Error && Snack.error(error.message);
 		}
 	}, [email, name, password]);
 

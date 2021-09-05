@@ -10,17 +10,16 @@ interface ButtonProps extends TouchableOpacityProps {
 	fullWidth?: boolean;
 }
 
-const Button: FC<ButtonProps> = ({ text, fullWidth, disabled, ...rest }) => {
-	console.log(disabled);
+const Button: FC<ButtonProps> = ({ text, fullWidth, ...rest }) => {
 	return (
-		<Styles.Base fullWidth={fullWidth} disabled={disabled} {...rest}>
+		<Styles.Base fullWidth={fullWidth} {...rest}>
 			<LinearGradient
-				style={[StyleSheet.absoluteFill, { opacity: disabled ? 0.5 : 1 }]}
-				colors={[Colours.secondary, Colours.primary]}
+				style={[StyleSheet.absoluteFill]}
+				colors={[Colours.blue, Colours.green]}
 				start={{ x: 0, y: 0 }}
 				end={{ x: 1, y: 0 }}
 			/>
-			<BodyFont colour={Colours.grey}>{text}</BodyFont>
+			<BodyFont colour={Colours.white}>{text}</BodyFont>
 		</Styles.Base>
 	);
 };

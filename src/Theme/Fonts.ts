@@ -18,7 +18,14 @@ export const BodyFont = styled.Text<FontProps>`
 `;
 
 export const TitleFont = styled(BodyFont)`
-	margin-left: ${Responsive.hpx(1)};
 	font-size: ${Responsive.hpx(3)};
 	font-weight: ${fontHeaderWeight};
+`;
+
+export const SubFont = styled(BodyFont)`
+	font-size: ${Responsive.hpx(1.6)};
+`;
+
+export const SubFontBold = styled(SubFont)`
+	font-weight: 600;
 `;

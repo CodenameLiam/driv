@@ -1,11 +1,16 @@
 const Colours = {
-	blue: '#40C9E1',
+	secondary: '#2A316E',
+	primary: '#0F2028',
 	orange: '#F79049',
 	pink: '#F62D7B',
-	green: '#27D8BF',
+	red: '#FF0749',
+	blue: '#3a86ff',
+	green: '#06d6a0',
+	black: '#0F2028',
 	grey: '#e3e3e8',
-	secondary: '#2A316E',
-	primary: '#1B1F4B',
+	white: '#ffffff',
+	lightPurple: '#2A316E',
+	darkPurple: '#1B1F4B',
 };
 
 export default Colours;
