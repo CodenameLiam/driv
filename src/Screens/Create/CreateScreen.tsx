@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useRef, useState } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import { SafeAreaView, TextInput } from 'react-native';
 import Colours from 'Theme/Colours';
 import { SubFont, SubFontBold, TitleFont } from 'Theme/Fonts';
@@ -14,7 +14,6 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import Responsive from 'Utils/Responsive';
 import Loading from 'Components/Loading/Loading';
 import SocialAuth from 'Components/SocialAuth/SocialAuth';
-import appleAuth from '@invertase/react-native-apple-authentication';
 
 const CreateScreen: FC = () => {
 	const emailRef = useRef<TextInput>(null);
@@ -24,24 +23,6 @@ const CreateScreen: FC = () => {
 	const navigation = useNavigation<CreateNavProps>();
 	const [showPassword, setShowPassword] = useState(false);
 	const { showSpinner, valid, handleChange, handleCreate } = useCreate();
-
-	// const onApplePress = useCallback(async () => {
-	// 	const appleAuthRequestResponse = await appleAuth.performRequest({
-	// 		requestedOperation: appleAuth.Operation.LOGIN,
-	// 		requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
-	// 	});
-
-	// 	if (!appleAuthRequestResponse.identityToken) {
-	// 		throw 'Apple Sign-In failed - no identify token returned';
-	// 	}
-
-	// 	// Create a Firebase credential from the response
-	// 	const { identityToken, nonce } = appleAuthRequestResponse;
-	// 	const appleCredential = auth.AppleAuthProvider.credential(identityToken, nonce);
-
-	// 	// Sign the user in with the credential
-	// 	return auth().signInWithCredential(appleCredential);
-	// }, []);
 
 	return (
 		<SafeAreaView style={Full}>
@@ -108,17 +89,16 @@ const CreateScreen: FC = () => {
 						</Styles.IconContainer>
 					</Styles.InputContainer>
 
-					<Button
-						style={Styles.Button}
+					<Styles.AuthButton
 						text="Create Account"
 						fullWidth
 						onPress={handleCreate}
 						disabled={Object.values(valid).some(value => !value)}
 					/>
 
-					<Styles.ForgotContainer disabled>
-						<SubFont>Or</SubFont>
-					</Styles.ForgotContainer>
+					<Styles.SubFontContainer>
+						<SubFontBold>Or</SubFontBold>
+					</Styles.SubFontContainer>
 
 					<SocialAuth />
 

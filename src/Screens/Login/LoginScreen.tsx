@@ -1,5 +1,5 @@
 import React, { FC, useRef, useState } from 'react';
-import { SafeAreaView, ScrollView, TextInput } from 'react-native';
+import { SafeAreaView, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import * as Styles from 'Components/Auth/Auth.styles';
 import * as Atoms from 'Components/Auth/Auth.atoms';
 import { Full } from 'Theme/Global';
@@ -58,10 +58,12 @@ const LoginScreen: FC = () => {
 						</Styles.IconContainer>
 					</Styles.InputContainer>
 
-					<Button style={Styles.Button} text="Login" fullWidth onPress={handleLogin} disabled={!valid} />
-					<Styles.ForgotContainer onPress={() => navigation.navigate('Forgot')}>
-						<SubFontBold>Forgot Password?</SubFontBold>
-					</Styles.ForgotContainer>
+					<Styles.AuthButton text="Login" fullWidth onPress={handleLogin} disabled={!valid} />
+					<Styles.SubFontContainer>
+						<Styles.ForgotButton onPress={() => navigation.navigate('Forgot')}>
+							<SubFontBold>Forgot Password?</SubFontBold>
+						</Styles.ForgotButton>
+					</Styles.SubFontContainer>
 
 					<Styles.BottomTextContainer onPress={() => navigation.navigate('Create')}>
 						<SubFont>New to Drive? </SubFont>

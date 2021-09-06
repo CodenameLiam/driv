@@ -36,10 +36,11 @@ const ForgotScreen: FC = () => {
 						/>
 					</Styles.InputContainer>
 
-					<Button style={Styles.Button} text="Send" fullWidth onPress={handleReset} disabled={!valid} />
-					<Styles.ForgotContainer disabled>
+					<Styles.AuthButton text="Send" fullWidth onPress={handleReset} disabled={!valid} />
+
+					<Styles.SubFontContainer>
 						<SubFont>We'll email you a link to reset your password.</SubFont>
-					</Styles.ForgotContainer>
+					</Styles.SubFontContainer>
 				</Styles.Container>
 			</ScrollView>
 		</SafeAreaView>

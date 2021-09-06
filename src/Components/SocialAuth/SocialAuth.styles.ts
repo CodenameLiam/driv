@@ -11,7 +11,7 @@ interface SocialContainerProps {
 }
 
 export const SocialContainer = styled.TouchableOpacity<SocialContainerProps>`
-	margin: ${Responsive.hpx(1)};
+	margin: 0px ${Responsive.hpx(1)};
 	justify-content: center;
 	align-items: center;
 	width: ${({ dimensions }) => dimensions};

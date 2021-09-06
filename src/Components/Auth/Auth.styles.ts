@@ -1,4 +1,5 @@
 import styled, { css } from '@emotion/native';
+import Button from 'Components/Button/Button';
 import Colours from 'Theme/Colours';
 import { fontWeight, fontFamily, SubFont } from 'Theme/Fonts';
 import Responsive from 'Utils/Responsive';
@@ -56,18 +57,23 @@ export const IconContainer = styled.View`
 	right: ${Responsive.hpx(2)};
 `;
 
-export const Button = css`
-	margin: ${Responsive.hpx(1)} 0px;
+export const AuthButton = styled(Button)`
+	margin-top: ${Responsive.hpx(1)};
+`;
+
+export const ForgotButton = styled.TouchableOpacity`
+	padding: ${Responsive.hpx(1)};
 `;
 
 // ---------------------------------------------------------------
 // Other containers
 // ---------------------------------------------------------------
-export const ForgotContainer = styled.TouchableOpacity`
-	margin: ${Responsive.hpx(2)} 0px;
+export const SubFontContainer = styled.View`
+	margin: ${Responsive.hpx(3)} 0px;
 `;
 
 export const BottomTextContainer = styled.TouchableOpacity`
+	padding: ${Responsive.hpx(1)};
 	margin-top: auto;
 	flex-direction: row;
 	align-items: center;
