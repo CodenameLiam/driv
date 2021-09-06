@@ -25,16 +25,18 @@ export interface IconProps {
 	size: number;
 	colour: string;
 	style?: StyleProp<TextStyle>;
+	solid?: boolean;
+	light?: boolean;
 }
 
-const Icon: FC<IconProps> = ({ family, name, size, colour, style }) => {
+const Icon: FC<IconProps> = ({ family, name, size, colour, style, solid, light }) => {
 	switch (family) {
 		case 'entypo':
 			return <Entypo name={name} size={size} color={colour} style={style} />;
 		case 'fontawesome':
 			return <FontAwesome name={name} size={size} color={colour} style={style} />;
 		case 'fontawesome5':
-			return <FontAwesome5 name={name} size={size} color={colour} style={style} />;
+			return <FontAwesome5 name={name} size={size} color={colour} style={style} solid={solid} light={light} />;
 		case 'material':
 			return <MaterialIcons name={name} size={size} color={colour} style={style} />;
 		case 'materialcommunity':

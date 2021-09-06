@@ -1,23 +1,17 @@
 import React, { FC } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useUser } from 'Context/AppContext';
-import AuthReducer from 'Reducers/AuthReducer';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { AppParams } from './AppNavigation.params';
+import TabNavigation from 'Navigation/TabNavigation/TabNavigation';
+import SubmitScreen from 'Screens/Submit/SubmitScreen';
+
+const AppStack = createNativeStackNavigator<AppParams>();
 
 const AppNavigation: FC = () => {
-	const [, dispatchUser] = useUser();
-
-	const logout = (): void => {
-		dispatchUser(AuthReducer.actions.logout());
-	};
-
 	return (
-		<SafeAreaView>
-			<Text>App</Text>
-			<TouchableOpacity onPress={logout}>
-				<Text>Logout</Text>
-			</TouchableOpacity>
-		</SafeAreaView>
+		<AppStack.Navigator screenOptions={{ headerShown: false, presentation: 'modal' }}>
+			<AppStack.Screen name="Tabs" component={TabNavigation} options={{ statusBarStyle: 'dark' }} />
+			<AppStack.Screen name="Submit" component={SubmitScreen} />
+		</AppStack.Navigator>
 	);
 };
 

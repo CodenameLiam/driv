@@ -9,7 +9,7 @@ import { StatusBar } from 'react-native';
 const App: FC = () => {
 	return (
 		<AppContextProvider>
-			<StatusBar barStyle="dark-content" />
+			{/* <StatusBar barStyle="dark-content" /> */}
 			<NavigationContainer>
 				<RootNavigation />
 			</NavigationContainer>
