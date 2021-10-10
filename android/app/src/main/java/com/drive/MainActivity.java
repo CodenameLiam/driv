@@ -1,4 +1,4 @@
-package com.drive;
+package com.liam.drive;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;

@@ -2,7 +2,7 @@ import styled from '@emotion/native';
 import React from 'react';
 import { BaseToastProps } from 'react-native-toast-message';
 import Colours from 'Theme/Colours';
-import { fontFamily } from 'Theme/Fonts';
+import { fontFamilyBold } from 'Theme/Fonts';
 import Responsive from 'Utils/Responsive';
 
 interface ToastContainerProps {
@@ -10,6 +10,7 @@ interface ToastContainerProps {
 }
 
 const ToastContainer = styled.View<ToastContainerProps>`
+	z-index: 999;
 	position: relative;
 	overflow: hidden;
 	width: 90%;
@@ -30,8 +31,7 @@ const ToastHighlight = styled.View<ToastContainerProps>`
 `;
 
 const ToastText = styled.Text<ToastContainerProps>`
-	font-weight: 600;
-	font-family: ${fontFamily};
+	font-family: ${fontFamilyBold};
 	color: ${({ colour }) => colour};
 	padding: ${Responsive.hpx(1)};
 	padding-left: ${Responsive.hpx(2)};

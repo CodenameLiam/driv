@@ -10,10 +10,10 @@ module.exports = {
 		quotes: ['error', 'single', 'avoid-escape'],
 		semi: ['error', 'always'],
 		'react-native/no-unused-styles': 2,
-		'react-native/split-platform-components': 2,
+		'react-native/split-platform-components': 'off',
 		'react-native/no-inline-styles': 1,
 		'react-native/no-color-literals': 2,
-		'react-native/no-raw-text': 1,
+		'react-native/no-raw-text': 0,
 		'react-native/sort-styles': [
 			'error',
 			'asc',

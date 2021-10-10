@@ -6,20 +6,18 @@ interface FontProps {
 	colour?: string;
 }
 
-export const fontFamily = 'Poppins';
-export const fontWeight = '500';
-export const fontHeaderWeight = '600';
+export const fontFamily = 'Poppins-Medium';
+export const fontFamilyBold = 'Poppins-SemiBold';
 
 export const BodyFont = styled.Text<FontProps>`
-	font-weight: ${fontWeight};
 	font-family: ${fontFamily};
 	font-size: ${Responsive.hpx(2)};
-	color: ${props => props.colour ?? Colours.primary};
+	color: ${props => props.colour ?? Colours.black};
 `;
 
 export const TitleFont = styled(BodyFont)`
-	font-size: ${Responsive.hpx(3)};
-	font-weight: ${fontHeaderWeight};
+	font-size: ${Responsive.hpx(4)};
+	font-family: ${fontFamilyBold};
 `;
 
 export const SubFont = styled(BodyFont)`
@@ -27,5 +25,5 @@ export const SubFont = styled(BodyFont)`
 `;
 
 export const SubFontBold = styled(SubFont)`
-	font-weight: 600;
+	font-family: ${fontFamilyBold};
 `;

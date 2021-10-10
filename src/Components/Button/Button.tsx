@@ -6,20 +6,20 @@ import { BodyFont } from 'Theme/Fonts';
 import * as Styles from './Button.styles';
 
 interface ButtonProps extends TouchableOpacityProps {
-	text: string;
+	text?: string;
 	fullWidth?: boolean;
 }
 
-const Button: FC<ButtonProps> = ({ text, fullWidth, ...rest }) => {
+const Button: FC<ButtonProps> = ({ children, text, fullWidth, ...rest }) => {
 	return (
 		<Styles.Base fullWidth={fullWidth} {...rest}>
 			<LinearGradient
 				style={[StyleSheet.absoluteFill]}
-				colors={[Colours.blue, Colours.green]}
+				colors={[Colours.primary, Colours.secondary]}
 				start={{ x: 0, y: 0 }}
 				end={{ x: 1, y: 0 }}
 			/>
-			<BodyFont colour={Colours.white}>{text}</BodyFont>
+			{children ?? <BodyFont colour={Colours.white}>{text}</BodyFont>}
 		</Styles.Base>
 	);
 };

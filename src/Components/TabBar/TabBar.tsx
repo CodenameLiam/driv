@@ -17,7 +17,7 @@ const TabBar: FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
 		<Styles.Container style={{ ...Styles.ContainerShadow.shadow }}>
 			<Styles.IconButton onPress={() => navigation.navigate('Home')} disabled={state.index === 0}>
 				<Styles.IconContainer active={state.index === 0}>
-					<Icon family="feather" name="home" size={Responsive.h(4)} colour={Colours.primary} />
+					<Icon family="feather" name="home" size={Responsive.h(4)} colour={Colours.black} />
 				</Styles.IconContainer>
 			</Styles.IconButton>
 			<Styles.AddContainer>
@@ -25,7 +25,7 @@ const TabBar: FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
 				<Styles.AddButton onPress={handleNavigation}>
 					<LinearGradient
 						style={[StyleSheet.absoluteFill]}
-						colors={[Colours.blue, Colours.green]}
+						colors={[Colours.primary, Colours.secondary]}
 						start={{ x: 0, y: 0 }}
 						end={{ x: 1, y: 0 }}
 					/>
@@ -34,7 +34,7 @@ const TabBar: FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
 			</Styles.AddContainer>
 			<Styles.IconButton onPress={() => navigation.navigate('Profile')} disabled={state.index === 1}>
 				<Styles.IconContainer active={state.index === 1}>
-					<Icon family="feather" name="user" size={Responsive.h(4)} colour={Colours.primary} />
+					<Icon family="feather" name="user" size={Responsive.h(4)} colour={Colours.black} />
 				</Styles.IconContainer>
 			</Styles.IconButton>
 		</Styles.Container>

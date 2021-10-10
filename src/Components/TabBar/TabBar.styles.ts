@@ -9,7 +9,7 @@ export const Container = styled.View`
 	align-items: center;
 	justify-content: space-between;
 	border-radius: ${Responsive.hpx(100)};
-	margin: ${Responsive.hpx(5)} ${Responsive.wpx(18)};
+	margin: ${Responsive.hpx(5)} ${Responsive.wpx(20)};
 `;
 
 /* padding: 0px ${Responsive.hpx(2)}; */
@@ -26,7 +26,7 @@ interface IconContainerProps {
 }
 
 export const IconContainer = styled.View<IconContainerProps>`
-	background-color: ${({ active }) => (active ? Colours.grey : Colours.white)};
+	background-color: ${({ active }) => (active ? Colours.Greys.GREY1 : Colours.white)};
 	padding: ${Responsive.hpx(1.25)};
 	border-radius: 200px;
 `;

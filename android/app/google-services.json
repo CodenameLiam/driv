@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "291287569224-nkl5httl66p8mherkg69lcfh0h9rb0gm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.liam.drive",
+            "certificate_hash": "487c08e42838efba37b89bf58f6360d7815327b8"
+          }
+        },
+        {
           "client_id": "291287569224-49vj6val8t5bn70214tueanih7sks54v.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "291287569224-49vj6val8t5bn70214tueanih7sks54v.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "291287569224-b87ta40uuv48duv7lcn7j96lh4cmantd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.liam.drive"
+              }
             }
           ]
         }

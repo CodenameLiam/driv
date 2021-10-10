@@ -1,7 +1,7 @@
 import styled, { css } from '@emotion/native';
 import Button from 'Components/Button/Button';
 import Colours from 'Theme/Colours';
-import { fontWeight, fontFamily, SubFont } from 'Theme/Fonts';
+import { fontFamily, fontFamilyBold, TitleFont } from 'Theme/Fonts';
 import Responsive from 'Utils/Responsive';
 
 // ---------------------------------------------------------------
@@ -16,6 +16,13 @@ export const Container = styled.View`
 // ---------------------------------------------------------------
 // Title elements
 // ---------------------------------------------------------------
+export const CreateContainer = styled.View`
+	flex-direction: row;
+	align-items: center;
+	margin-top: ${Responsive.hpx(5)};
+	margin-bottom: ${Responsive.hpx(6)};
+`;
+
 export const TitleContainer = styled.View`
 	flex-direction: row;
 	align-items: center;
@@ -25,6 +32,15 @@ export const TitleContainer = styled.View`
 
 export const TitleIcon = css`
 	margin-right: ${Responsive.hpx(1)};
+`;
+
+export const TitleLogo = styled.Image`
+	height: ${Responsive.wpx(20)};
+	width: ${Responsive.wpx(20)};
+`;
+
+export const CreateFont = styled(TitleFont)`
+	font-size: ${Responsive.wpx(10)};
 `;
 
 // ---------------------------------------------------------------
@@ -42,10 +58,9 @@ export const InputContainer = styled.View`
 
 export const Input = styled.TextInput`
 	flex: 1;
-	font-weight: ${fontWeight};
 	font-family: ${fontFamily};
 	font-size: ${Responsive.hpx(2)};
-	color: ${Colours.primary};
+	color: ${Colours.black};
 `;
 
 // ---------------------------------------------------------------
@@ -73,8 +88,9 @@ export const SubFontContainer = styled.View`
 `;
 
 export const BottomTextContainer = styled.TouchableOpacity`
+	position: absolute;
+	bottom: ${Responsive.hpx(4)};
 	padding: ${Responsive.hpx(1)};
-	margin-top: auto;
 	flex-direction: row;
 	align-items: center;
 `;

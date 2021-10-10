@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import auth from '@react-native-firebase/auth';
 import { Snack } from 'Components/Snack/Snack';
+import { useName } from 'Context/AppContext';
 
 const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -11,15 +12,15 @@ interface ValidAccount {
 }
 
 interface UseCreateAccount {
-	showSpinner: boolean;
+	loading: boolean;
 	valid: ValidAccount;
 	handleChange: (value: string, action: 'name' | 'email' | 'password') => void;
 	handleCreate: () => Promise<void>;
 }
 
 const useCreate = (): UseCreateAccount => {
-	const [showSpinner, setShowSpinner] = useState(false);
-	const [name, setName] = useState('');
+	const [loading, setLoading] = useState(false);
+	const [name, setName] = useName();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [valid, setValid] = useState<ValidAccount>({ name: false, email: false, password: false });
@@ -41,21 +42,21 @@ const useCreate = (): UseCreateAccount => {
 					break;
 			}
 		},
-		[valid],
+		[valid, setName],
 	);
 
 	const handleCreate = useCallback(async () => {
 		try {
-			setShowSpinner(true);
+			setLoading(true);
 			await auth().createUserWithEmailAndPassword(email, password);
 			await auth().currentUser?.updateProfile({ displayName: name });
 		} catch (error) {
 			error instanceof Error && Snack.error(error.message);
-			setShowSpinner(false);
+			setLoading(false);
 		}
-	}, [email, name, password]);
+	}, [email, password, name]);
 
-	return { showSpinner, valid, handleChange, handleCreate };
+	return { loading, valid, handleChange, handleCreate };
 };
 
 export default useCreate;

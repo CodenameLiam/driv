@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { RootParams } from './RootNavigation.params';
 import AuthNavigation from 'Navigation/AuthNavigation/AuthNavigation';
-import AppNavigation from 'Navigation/AppNavigation.ts/AppNavigation';
+import AppNavigation from 'Navigation/AppNavigation/AppNavigation';
 import { useUser } from 'Context/AppContext';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 

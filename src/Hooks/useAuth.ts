@@ -1,6 +1,23 @@
 import { Dispatch, useEffect, useReducer, useState } from 'react';
-import auth from '@react-native-firebase/auth';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import AuthReducer, { AuthAction, AuthState } from 'Reducers/AuthReducer';
+import firestore from '@react-native-firebase/firestore';
+import { User, UserData } from 'Types/User';
+import { useName } from 'Context/AppContext';
+import API from 'API/API';
+
+// const attachUserData = async (firebaseUser: FirebaseAuthTypes.User | null): Promise<User | null> => {
+// 	if (firebaseUser) {
+// 		let user: User = firebaseUser;
+// 		const userDocument = await API.users.get(firebaseUser.uid);
+// 		if (userDocument.exists) {
+// 			user.data = userDocument.data() as UserData;
+// 		}
+
+// 		return user;
+// 	}
+// 	return null;
+// };
 
 interface UseAuth {
 	loading: boolean;
@@ -14,8 +31,12 @@ const useAuth = (): UseAuth => {
 	const [user, dispatchUser] = useReducer(AuthReducer.reducer, null);
 
 	useEffect(() => {
-		const authListener = auth().onAuthStateChanged(user => {
-			user && dispatchUser(AuthReducer.actions.login(user));
+		const authListener = auth().onAuthStateChanged(async _user => {
+			if (_user) {
+				setLoading(true);
+				const userDocument = await API.users.get(_user.uid);
+				dispatchUser(AuthReducer.actions.login(_user, userDocument.data()));
+			}
 			setLoading(false);
 		});
 		return authListener;

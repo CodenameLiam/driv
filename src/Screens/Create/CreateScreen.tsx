@@ -1,10 +1,9 @@
 import React, { FC, useRef, useState } from 'react';
-import { SafeAreaView, TextInput } from 'react-native';
+import { Image, SafeAreaView, TextInput } from 'react-native';
 import Colours from 'Theme/Colours';
 import { SubFont, SubFontBold, TitleFont } from 'Theme/Fonts';
 import { Full } from 'Theme/Global';
 import Icon from 'Components/Icon/Icon';
-import Button from 'Components/Button/Button';
 import useCreate from 'Hooks/useCreate';
 import * as Styles from 'Components/Auth/Auth.styles';
 import * as Atoms from 'Components/Auth/Auth.atoms';
@@ -14,6 +13,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import Responsive from 'Utils/Responsive';
 import Loading from 'Components/Loading/Loading';
 import SocialAuth from 'Components/SocialAuth/SocialAuth';
+import { css } from '@emotion/native';
 
 const CreateScreen: FC = () => {
 	const emailRef = useRef<TextInput>(null);
@@ -22,11 +22,11 @@ const CreateScreen: FC = () => {
 
 	const navigation = useNavigation<CreateNavProps>();
 	const [showPassword, setShowPassword] = useState(false);
-	const { showSpinner, valid, handleChange, handleCreate } = useCreate();
+	const { loading, valid, handleChange, handleCreate } = useCreate();
 
 	return (
 		<SafeAreaView style={Full}>
-			<Loading visible={showSpinner} />
+			<Loading visible={loading} />
 			<KeyboardAwareScrollView
 				ref={scrollRef}
 				onKeyboardWillShow={() => scrollRef.current?.scrollToPosition(0, Responsive.h(7))}
@@ -35,22 +35,24 @@ const CreateScreen: FC = () => {
 				scrollEnabled={false}
 			>
 				<Styles.Container>
-					<Styles.TitleContainer>
-						<Icon
+					<Styles.CreateContainer>
+						<Styles.TitleLogo source={require('Assets/Images/Driv.png')} />
+						{/* <Icon
 							family="fontawesome5"
 							name="car"
-							colour={Colours.primary}
+							colour={Colours.black}
 							size={24}
 							style={Styles.TitleIcon}
-						/>
-						<TitleFont>Drive</TitleFont>
-					</Styles.TitleContainer>
+						/> */}
+						<Styles.CreateFont>Driv</Styles.CreateFont>
+					</Styles.CreateContainer>
 
 					<Styles.InputContainer>
 						<Styles.Input
 							placeholder="Name"
 							placeholderTextColor={Colours.Greys.GREY3}
 							returnKeyType="next"
+							autoCapitalize="words"
 							blurOnSubmit={false}
 							onChangeText={e => handleChange(e, 'name')}
 							onSubmitEditing={() => emailRef.current?.focus()}

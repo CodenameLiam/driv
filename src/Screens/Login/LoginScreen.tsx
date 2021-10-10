@@ -10,6 +10,7 @@ import { useNavigation } from '@react-navigation/core';
 import { LoginNavProps } from 'Navigation/AuthNavigation/AuthNavigation.params';
 import Loading from 'Components/Loading/Loading';
 import Colours from 'Theme/Colours';
+import SocialAuth from 'Components/SocialAuth/SocialAuth';
 
 const LoginScreen: FC = () => {
 	const passwordRef = useRef<TextInput>(null);
@@ -59,15 +60,17 @@ const LoginScreen: FC = () => {
 					</Styles.InputContainer>
 
 					<Styles.AuthButton text="Login" fullWidth onPress={handleLogin} disabled={!valid} />
+
 					<Styles.SubFontContainer>
+						<SubFontBold>Or</SubFontBold>
+					</Styles.SubFontContainer>
+
+					<SocialAuth />
+
+					<Styles.BottomTextContainer onPress={() => navigation.navigate('Create')}>
 						<Styles.ForgotButton onPress={() => navigation.navigate('Forgot')}>
 							<SubFontBold>Forgot Password?</SubFontBold>
 						</Styles.ForgotButton>
-					</Styles.SubFontContainer>
-
-					<Styles.BottomTextContainer onPress={() => navigation.navigate('Create')}>
-						<SubFont>New to Drive? </SubFont>
-						<SubFontBold>Sign up</SubFontBold>
 					</Styles.BottomTextContainer>
 				</Styles.Container>
 			</ScrollView>

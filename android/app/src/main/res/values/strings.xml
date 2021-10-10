@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">drive</string>
+    <string name="facebook_app_id">1260086794440258</string>
+    <string name="facebook_client_token">6b5b13d7820dfe0c8cb6e450067843d7</string>
 </resources>
