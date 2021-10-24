@@ -22,9 +22,11 @@ export const InputContainer = styled.View`
 
 export const Input = styled.TextInput`
 	flex: 1;
+	padding: 0px;
 	font-family: ${fontFamilyBold};
 	font-size: ${Responsive.hpx(5)};
 	color: ${Colours.black};
+	include-font-padding: false;
 `;
 
 export const WarningText = styled(SubFontBold)`

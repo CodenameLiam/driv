@@ -46,4 +46,5 @@ export interface InteractionAttribute {
 	type: InteractionType;
 	subType: InteractionSubType;
 	text: string;
+	severe?: boolean;
 }

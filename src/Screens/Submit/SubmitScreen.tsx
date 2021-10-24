@@ -14,7 +14,7 @@ import { Full } from 'Theme/Global';
 import { InteractionNegative, InteractionPositive, InteractionSubType, InteractionType } from 'Types/Interaction';
 import { regoRe } from 'Utils/Rego';
 import Responsive from 'Utils/Responsive';
-import { InteractionEnabled, InteractionEnabledType, InteractionMap, Interactions } from 'Types/Attributes';
+import { InteractionEnabled, InteractionEnabledType, Interactions } from 'Types/Attributes';
 import * as Styles from './SubmitScreen.styles';
 import { useRefresh, useUser } from 'Context/AppContext';
 import useLocation from 'Hooks/useLocation';
@@ -67,6 +67,24 @@ const SubmitScreen: FC = () => {
 					await API.intereactions.set(rego, date, type, subType as InteractionSubType, position);
 				}
 			});
+
+			if (type === InteractionType.Negative) {
+				const negativeInteractions = Interactions.filter(
+					interaction => subTypes[interaction.subType as InteractionSubType] === true,
+				);
+
+				negativeInteractions.forEach(async interaction => {
+					if (interaction.severe) {
+						await API.intereactions.set(rego, date, InteractionType.Warning, interaction.subType, position);
+					}
+				});
+
+				const deductions = negativeInteractions
+					.map(interaction => (interaction.severe ? 1.2 : 0.3))
+					.reduce((a, b) => a + b, 0);
+
+				await API.intereactions.rank(rego, deductions);
+			}
 
 			await Promise.all(actions);
 			setRefresh(true);

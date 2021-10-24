@@ -2,6 +2,7 @@ import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
 interface UserData {
 	rego?: string;
+	rank?: number;
 }
 
 export interface User {

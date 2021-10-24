@@ -98,3 +98,9 @@ export const InteractionHeaderFont = styled(TitleFont)`
 export const InteractionBodyFont = styled(BodyFont)`
 	font-size: ${Responsive.hpx(1.8)};
 `;
+
+export const Placeholder = styled.View`
+	justify-content: center;
+	align-items: center;
+	padding: ${Responsive.hpx(3)} 0px;
+`;

@@ -11,12 +11,14 @@ export const fontFamilyBold = 'Poppins-SemiBold';
 
 export const BodyFont = styled.Text<FontProps>`
 	font-family: ${fontFamily};
-	font-size: ${Responsive.hpx(2)};
+	font-size: ${Responsive.hpx(1.8)};
 	color: ${props => props.colour ?? Colours.black};
+	padding: 0px;
+	include-font-padding: false;
 `;
 
 export const TitleFont = styled(BodyFont)`
-	font-size: ${Responsive.hpx(4)};
+	font-size: ${Responsive.hpx(3.5)};
 	font-family: ${fontFamilyBold};
 `;
 

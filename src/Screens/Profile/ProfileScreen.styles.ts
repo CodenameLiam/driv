@@ -1,4 +1,4 @@
-import styled from '@emotion/native';
+import styled, { css } from '@emotion/native';
 import Colours from 'Theme/Colours';
 import { TitleFont } from 'Theme/Fonts';
 import Responsive from 'Utils/Responsive';
@@ -39,6 +39,15 @@ export const Name = styled(TitleFont)`
 	font-size: ${Responsive.wpx(6)};
 `;
 
+export const Stars = styled.View`
+	flex-direction: row;
+	align-items: center;
+`;
+
+export const StarIcon = css`
+	margin-left: ${Responsive.hpx(0.5)};
+`;
+
 export const Row = styled.View`
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -69,6 +78,7 @@ export const RegoTile = styled(Tile)`
 
 export const AttributeTile = styled(Tile)`
 	margin-right: ${Responsive.hpx(1)};
+	margin-bottom: ${Responsive.hpx(1)};
 `;
 
 export const InteractionContainer = styled.View`

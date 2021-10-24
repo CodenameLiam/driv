@@ -32,21 +32,41 @@ export interface IconProps {
 const Icon: FC<IconProps> = ({ family, name, size, colour, style, solid, light }) => {
 	switch (family) {
 		case 'entypo':
-			return <Entypo name={name} size={size} color={colour} style={style} />;
+			return <Entypo name={name} size={size} color={colour} style={[{ includeFontPadding: false }, style]} />;
 		case 'fontawesome':
-			return <FontAwesome name={name} size={size} color={colour} style={style} />;
+			return (
+				<FontAwesome name={name} size={size} color={colour} style={[{ includeFontPadding: false }, style]} />
+			);
 		case 'fontawesome5':
-			return <FontAwesome5 name={name} size={size} color={colour} style={style} solid={solid} light={light} />;
+			return (
+				<FontAwesome5
+					name={name}
+					size={size}
+					color={colour}
+					style={[{ includeFontPadding: false }, style]}
+					solid={solid}
+					light={light}
+				/>
+			);
 		case 'material':
-			return <MaterialIcons name={name} size={size} color={colour} style={style} />;
+			return (
+				<MaterialIcons name={name} size={size} color={colour} style={[{ includeFontPadding: false }, style]} />
+			);
 		case 'materialcommunity':
-			return <MaterialCommunityIcons name={name} size={size} color={colour} style={style} />;
+			return (
+				<MaterialCommunityIcons
+					name={name}
+					size={size}
+					color={colour}
+					style={[{ includeFontPadding: false }, style]}
+				/>
+			);
 		case 'feather':
-			return <Feather name={name} size={size} color={colour} style={style} />;
+			return <Feather name={name} size={size} color={colour} style={[{ includeFontPadding: false }, style]} />;
 		case 'antdesign':
-			return <AntDesign name={name} size={size} color={colour} style={style} />;
+			return <AntDesign name={name} size={size} color={colour} style={[{ includeFontPadding: false }, style]} />;
 		case 'ion':
-			return <Ionicons name={name} size={size} color={colour} style={style} />;
+			return <Ionicons name={name} size={size} color={colour} style={[{ includeFontPadding: false }, style]} />;
 		default:
 			return <View />;
 	}

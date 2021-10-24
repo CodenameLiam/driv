@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/core';
-import { useUser } from 'Context/AppContext';
+import { useName, useUser } from 'Context/AppContext';
 import { TabNavProps } from 'Navigation/AppNavigation/AppNavigation.params';
 import React, { FC, Fragment, useEffect, useMemo, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
@@ -68,6 +68,7 @@ const getSortedNegativeInteractions = (interactions: InteractionObject[]): Sorte
 
 const ProfileScreen: FC = () => {
 	const [user] = useUser();
+	const [name] = useName();
 	const [loading, setLoading] = useState(true);
 
 	// Interaction state
@@ -149,8 +150,17 @@ const ProfileScreen: FC = () => {
 						)}
 					</TouchableOpacity>
 					<Styles.InfoTextContainer>
-						<Styles.Name>{user?.user?.displayName}</Styles.Name>
-						<BodyFont>{user?.user?.email}</BodyFont>
+						<Styles.Name>{user?.user?.displayName ?? name}</Styles.Name>
+						<Styles.Stars>
+							<BodyFont>{user?.data?.rank}</BodyFont>
+							<Icon
+								family="fontawesome"
+								name="star"
+								colour={Colours.black}
+								size={Responsive.h(2)}
+								style={Styles.StarIcon}
+							/>
+						</Styles.Stars>
 					</Styles.InfoTextContainer>
 				</Styles.InfoContainer>
 				<Styles.RowHeader>

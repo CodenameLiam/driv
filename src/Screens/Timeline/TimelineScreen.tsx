@@ -1,7 +1,7 @@
 import Icon from 'Components/Icon/Icon';
 import { useUser } from 'Context/AppContext';
 import React, { FC, useEffect, useMemo, useState } from 'react';
-import { FlatList, Platform, ScrollView, StatusBar, Text, View } from 'react-native';
+import { FlatList, Platform, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Colours from 'Theme/Colours';
 import { BodyFont } from 'Theme/Fonts';
@@ -28,8 +28,6 @@ const TimelineScreen: FC = () => {
 				docRef.forEach(doc => {
 					_interactions.push(doc.data() as InteractionObject);
 				});
-				_interactions.sort((a, b) => a.date.seconds - b.date.seconds);
-
 				setInteractions(_interactions);
 			}
 			setLoading(false);
@@ -95,6 +93,13 @@ const TimelineScreen: FC = () => {
 						<Styles.InteractionHeaderFont>Time</Styles.InteractionHeaderFont>
 					</Styles.InteractionCell>
 				</Styles.InteractionRow>
+
+				{interactions.length < 1 && (
+					<Styles.Placeholder>
+						<BodyFont>You have had no interactions yet.</BodyFont>
+					</Styles.Placeholder>
+				)}
+
 				<FlatList
 					data={interactions}
 					renderItem={({ item, index }) => (

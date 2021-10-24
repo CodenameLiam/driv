@@ -45,11 +45,13 @@ export const Interactions: InteractionAttribute[] = [
 		type: InteractionType.Negative,
 		subType: InteractionNegative.CriminalActivity,
 		text: 'Crinimal Activity',
+		severe: true,
 	},
 	{
 		type: InteractionType.Negative,
 		subType: InteractionNegative.HitAndRun,
 		text: 'Hit & Run',
+		severe: true,
 	},
 	{
 		type: InteractionType.Negative,
@@ -60,16 +62,19 @@ export const Interactions: InteractionAttribute[] = [
 		type: InteractionType.Negative,
 		subType: InteractionNegative.RedLight,
 		text: 'Ran Red Light',
+		severe: true,
 	},
 	{
 		type: InteractionType.Negative,
 		subType: InteractionNegative.Stolen,
 		text: 'Stolen Vehicle',
+		severe: true,
 	},
 	{
 		type: InteractionType.Negative,
 		subType: InteractionNegative.ViolentBehaviour,
 		text: 'Violent Behaviour',
+		severe: true,
 	},
 	{
 		type: InteractionType.Negative,
