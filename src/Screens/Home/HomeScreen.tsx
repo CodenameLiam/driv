@@ -50,8 +50,8 @@ const HomeScreen: FC = () => {
 	const getNearbyIntrations = useCallback(async (): Promise<void> => {
 		try {
 			if (position) {
-				const _todayNearMe = await API.intereactions.getByLocation(moment(), position);
-				const _yesterdayNearMe = await API.intereactions.getByLocation(moment().subtract(1, 'day'), position);
+				const _todayNearMe = await API.interactions.getByLocation(moment(), position);
+				const _yesterdayNearMe = await API.interactions.getByLocation(moment().subtract(1, 'day'), position);
 				setTodayNearMe(_todayNearMe as InteractionObject[]);
 				setYesterdayNearMe(_yesterdayNearMe as InteractionObject[]);
 				setLoadingInteractions(false);

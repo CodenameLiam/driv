@@ -44,7 +44,7 @@ export const Interactions: InteractionAttribute[] = [
 	{
 		type: InteractionType.Negative,
 		subType: InteractionNegative.CriminalActivity,
-		text: 'Crinimal Activity',
+		text: 'Criminal Activity',
 		severe: true,
 	},
 	{
@@ -100,7 +100,7 @@ export const InteractionMap: InteractionMapType = {
 	},
 	[InteractionType.Negative]: {
 		[InteractionNegative.Crashed]: 'Crashed',
-		[InteractionNegative.CriminalActivity]: 'Crinimal Activity',
+		[InteractionNegative.CriminalActivity]: 'Criminal Activity',
 		[InteractionNegative.HitAndRun]: 'Hit & Run',
 		[InteractionNegative.OffensiveBehaviour]: 'Offensive Behaviour',
 		[InteractionNegative.RedLight]: 'Ran Red Light',

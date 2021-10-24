@@ -18,6 +18,7 @@ import { InteractionEnabled, InteractionEnabledType, Interactions } from 'Types/
 import * as Styles from './SubmitScreen.styles';
 import { useRefresh, useUser } from 'Context/AppContext';
 import useLocation from 'Hooks/useLocation';
+import functions from '@react-native-firebase/functions';
 
 type SubmitType = InteractionPositive | InteractionNegative;
 
@@ -64,7 +65,7 @@ const SubmitScreen: FC = () => {
 			const date = new Date(Date.now());
 			const actions = Object.entries(subTypes).map(async ([subType, value]) => {
 				if (value) {
-					await API.intereactions.set(rego, date, type, subType as InteractionSubType, position);
+					await API.interactions.set(rego, date, type, subType as InteractionSubType, position);
 				}
 			});
 
@@ -75,15 +76,18 @@ const SubmitScreen: FC = () => {
 
 				negativeInteractions.forEach(async interaction => {
 					if (interaction.severe) {
-						await API.intereactions.set(rego, date, InteractionType.Warning, interaction.subType, position);
+						await API.interactions.set(rego, date, InteractionType.Warning, interaction.subType, position);
+						functions().httpsCallable('sendNotification')({ rego, type: 'severe' });
 					}
 				});
+
+				functions().httpsCallable('sendNotification')({ rego, type: 'minor' });
 
 				const deductions = negativeInteractions
 					.map(interaction => (interaction.severe ? 1.2 : 0.3))
 					.reduce((a, b) => a + b, 0);
 
-				await API.intereactions.rank(rego, deductions);
+				await API.interactions.rank(rego, deductions);
 			}
 
 			await Promise.all(actions);

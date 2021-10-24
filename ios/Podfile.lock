@@ -384,6 +384,12 @@ PODS:
   - Firebase/Firestore (8.7.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 8.7.0)
+  - Firebase/Functions (8.7.0):
+    - Firebase/CoreOnly
+    - FirebaseFunctions (~> 8.7.0)
+  - Firebase/Messaging (8.7.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 8.7.0)
   - Firebase/Storage (8.7.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 8.7.0)
@@ -413,6 +419,23 @@ PODS:
     - FirebaseCore (~> 8.0)
     - "gRPC-C++ (~> 1.28.0)"
     - leveldb-library (~> 1.22)
+    - nanopb (~> 2.30908.0)
+  - FirebaseFunctions (8.7.0):
+    - FirebaseCore (~> 8.0)
+    - GTMSessionFetcher/Core (~> 1.5)
+  - FirebaseInstallations (8.8.0):
+    - FirebaseCore (~> 8.0)
+    - GoogleUtilities/Environment (~> 7.4)
+    - GoogleUtilities/UserDefaults (~> 7.4)
+    - PromisesObjC (< 3.0, >= 1.2)
+  - FirebaseMessaging (8.7.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleDataTransport (~> 9.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
+    - GoogleUtilities/Environment (~> 7.4)
+    - GoogleUtilities/Reachability (~> 7.4)
+    - GoogleUtilities/UserDefaults (~> 7.4)
     - nanopb (~> 2.30908.0)
   - FirebaseStorage (8.7.0):
     - FirebaseCore (~> 8.0)
@@ -501,6 +524,8 @@ PODS:
     - GoogleUtilities/Reachability
   - "GoogleUtilities/NSData+zlib (7.5.2)"
   - GoogleUtilities/Reachability (7.5.2):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (7.5.2):
     - GoogleUtilities/Logger
   - "gRPC-C++ (1.28.2)":
     - "gRPC-C++/Implementation (= 1.28.2)"
@@ -833,6 +858,14 @@ PODS:
     - Firebase/Firestore (= 8.7.0)
     - React-Core
     - RNFBApp
+  - RNFBFunctions (12.9.3):
+    - Firebase/Functions (= 8.7.0)
+    - React-Core
+    - RNFBApp
+  - RNFBMessaging (12.9.3):
+    - Firebase/Messaging (= 8.7.0)
+    - React-Core
+    - RNFBApp
   - RNFBStorage (12.9.0):
     - Firebase/Storage (= 8.7.0)
     - React-Core
@@ -914,6 +947,8 @@ DEPENDENCIES:
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBFirestore (from `../node_modules/@react-native-firebase/firestore`)"
+  - "RNFBFunctions (from `../node_modules/@react-native-firebase/functions`)"
+  - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
   - "RNFBStorage (from `../node_modules/@react-native-firebase/storage`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
@@ -937,6 +972,9 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseFirestore
+    - FirebaseFunctions
+    - FirebaseInstallations
+    - FirebaseMessaging
     - FirebaseStorage
     - Flipper
     - Flipper-Boost-iOSX
@@ -1037,6 +1075,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/auth"
   RNFBFirestore:
     :path: "../node_modules/@react-native-firebase/firestore"
+  RNFBFunctions:
+    :path: "../node_modules/@react-native-firebase/functions"
+  RNFBMessaging:
+    :path: "../node_modules/@react-native-firebase/messaging"
   RNFBStorage:
     :path: "../node_modules/@react-native-firebase/storage"
   RNGestureHandler:
@@ -1070,6 +1112,9 @@ SPEC CHECKSUMS:
   FirebaseCore: f4804c1d3f4bbbefc88904d15653038f2c99ddf7
   FirebaseCoreDiagnostics: b63732f581a1c6a453ec7241f9ab60b3a5bd3450
   FirebaseFirestore: e722ba956610c45d368d9787689e2aa41b809e68
+  FirebaseFunctions: 9b78e79a3de4ee00ca1af7fd8c5fd7ed76fbf702
+  FirebaseInstallations: 2563cb18a723ef9c6ef18318a49519b75dce613c
+  FirebaseMessaging: 93227dd71d7888e200baef65043f81acb2b6596e
   FirebaseStorage: 2e6e58fe31fb0061fdce3f156d0ebc964e9de6ba
   Flipper: b1fddf9a17c32097b2b4c806ad158b2f36bb2692
   Flipper-Boost-iOSX: fd1e2b8cbef7e662a122412d7ac5f5bea715403c
@@ -1126,6 +1171,8 @@ SPEC CHECKSUMS:
   RNFBApp: b97d6654509a5852d49f0abf93be76b300fd2e2c
   RNFBAuth: 07fd836f31fe09d465c22476a052766251af1c49
   RNFBFirestore: a1eeb9f7b0f05f87f41cdff34aba1c6a780814e6
+  RNFBFunctions: e0d275d5a51ecf51177ce11c49b02dc980071c36
+  RNFBMessaging: 3e4ad79319083f7821f2a00cd4b42ee2ae4bdc4d
   RNFBStorage: e083a23c0c0dfec1d4dd38c7aaa8d512c7e245c7
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNGoogleSignin: 1b18b300f4eccd0a121f19f204ce28d6e8fb4bb5

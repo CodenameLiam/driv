@@ -111,11 +111,11 @@ const ProfileScreen: FC = () => {
 				today.setDate(today.getDate() - 1);
 				month.setDate(month.getDate() - 30);
 				// Fetch Data
-				const docRefToday = await API.intereactions.getByDate(user.data.rego, today);
+				const docRefToday = await API.interactions.getByDate(user.data.rego, today);
 				docRefToday.forEach(doc => {
 					_interactionsToday.push(doc.data() as InteractionObject);
 				});
-				const docRefMonth = await API.intereactions.getByDate(user.data.rego, month);
+				const docRefMonth = await API.interactions.getByDate(user.data.rego, month);
 				docRefMonth.forEach(doc => {
 					_interactionsMonth.push(doc.data() as InteractionObject);
 				});
@@ -152,7 +152,7 @@ const ProfileScreen: FC = () => {
 					<Styles.InfoTextContainer>
 						<Styles.Name>{user?.user?.displayName ?? name}</Styles.Name>
 						<Styles.Stars>
-							<BodyFont>{user?.data?.rank}</BodyFont>
+							<BodyFont>{user?.data?.rank && Math.round(user.data.rank * 10) / 10}</BodyFont>
 							<Icon
 								family="fontawesome"
 								name="star"

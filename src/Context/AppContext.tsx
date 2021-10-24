@@ -6,6 +6,7 @@ import Spinner from 'react-native-spinkit';
 import Responsive from 'Utils/Responsive';
 import Colours from 'Theme/Colours';
 import PageLoading from 'Components/Loading/PageLoading';
+import useNotifications from 'Hooks/useNotifications';
 
 /* Interface for the app context */
 interface AppContextState {

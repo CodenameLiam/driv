@@ -9,10 +9,17 @@ import { UserData } from 'Types/User';
 const usersRef = firestore().collection('users');
 const rewardsRef = firestore().collection('rewards');
 const interactionsRef = firestore().collection('interactions');
+const notificationsRef = firestore().collection('notifications');
 
 const users = {
 	get: (uid: string) => usersRef.doc(uid).get(),
 	set: (uid: string, rego: string) => usersRef.doc(uid).set({ rego, rank: 5 }),
+	token: (uid: string, notificationToken: string) => usersRef.doc(uid).update({ notificationToken }),
+};
+
+const notifications = {
+	get: (uid: string) => notificationsRef.where('user', '==', uid).orderBy('date', 'desc').get(),
+	set: (id: string) => notificationsRef.doc(id).update({ read: true }),
 };
 
 const rewards = {
@@ -26,7 +33,7 @@ const rewards = {
 	},
 };
 
-const intereactions = {
+const interactions = {
 	get: (rego: string) => interactionsRef.where('rego', '==', rego).orderBy('date', 'desc').get(),
 	getByDate: (rego: string, date: Date) => interactionsRef.where('rego', '==', rego).where('date', '>=', date).get(),
 	getByLocation: async (date: Moment, position: Geolocation.GeoPosition) => {
@@ -73,14 +80,12 @@ const intereactions = {
 	rank: async (rego: string, deductions: number) => {
 		const userSnaps = await usersRef.where('rego', '==', rego).get();
 		userSnaps.forEach(user => {
-			if (user.exists) {
-				const userData: UserData = user.data();
-				if (userData.rank) {
-					console.log(`Removing ${deductions} points from ${user.id}`);
-					usersRef.doc(user.id).update({ rank: Math.max(0, userData.rank - deductions) });
-				} else {
-					usersRef.doc(user.id).update({ rank: Math.max(0, 5 - deductions) });
-				}
+			const userData: UserData = user.data();
+			if (userData.rank) {
+				console.log(`Removing ${deductions} points from ${user.id}`);
+				usersRef.doc(user.id).update({ rank: Math.max(0, userData.rank - deductions) });
+			} else {
+				usersRef.doc(user.id).update({ rank: Math.max(0, 5 - deductions) });
 			}
 		});
 	},
@@ -89,7 +94,8 @@ const intereactions = {
 const API = {
 	users,
 	rewards,
-	intereactions,
+	notifications,
+	interactions,
 };
 
 export default API;

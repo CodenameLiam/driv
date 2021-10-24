@@ -1,8 +1,7 @@
 import Icon from 'Components/Icon/Icon';
 import { useUser } from 'Context/AppContext';
 import React, { FC, useEffect, useMemo, useState } from 'react';
-import { FlatList, Platform, StatusBar } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { FlatList, Platform, SafeAreaView, StatusBar, View } from 'react-native';
 import Colours from 'Theme/Colours';
 import { BodyFont } from 'Theme/Fonts';
 import { Full } from 'Theme/Global';
@@ -24,7 +23,7 @@ const TimelineScreen: FC = () => {
 		(async () => {
 			if (user?.data?.rego) {
 				const _interactions: InteractionObject[] = [];
-				const docRef = await API.intereactions.get(user.data.rego);
+				const docRef = await API.interactions.get(user.data.rego);
 				docRef.forEach(doc => {
 					_interactions.push(doc.data() as InteractionObject);
 				});

@@ -3,6 +3,7 @@ import Responsive from 'Utils/Responsive';
 import Colours from './Colours';
 
 interface FontProps {
+	bold?: boolean;
 	colour?: string;
 }
 
@@ -10,7 +11,7 @@ export const fontFamily = 'Poppins-Medium';
 export const fontFamilyBold = 'Poppins-SemiBold';
 
 export const BodyFont = styled.Text<FontProps>`
-	font-family: ${fontFamily};
+	font-family: ${({ bold }) => (bold ? fontFamilyBold : fontFamily)};
 	font-size: ${Responsive.hpx(1.8)};
 	color: ${props => props.colour ?? Colours.black};
 	padding: 0px;

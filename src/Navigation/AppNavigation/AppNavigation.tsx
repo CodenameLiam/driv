@@ -8,6 +8,8 @@ import OnboardingScreen from 'Screens/OnboardingScreen/OnboardingScreen';
 import Header from 'Components/Header/Header';
 import SettingsScreen from 'Screens/Settings/SettingsScreen';
 import TimelineScreen from 'Screens/Timeline/TimelineScreen';
+import NotificationContextProvider from 'Context/NotificationContext';
+import NoticesScreen from 'Screens/Notices/NoticesScreen';
 
 const AppStack = createNativeStackNavigator<AppParams>();
 
@@ -15,49 +17,51 @@ const AppNavigation: FC = () => {
 	const [user] = useUser();
 
 	return (
-		<AppStack.Navigator
-			screenOptions={{
-				presentation: 'modal',
-			}}
-			initialRouteName={user?.data ? 'Tabs' : 'Onboarding'}
-		>
-			<AppStack.Screen name="Onboarding" component={OnboardingScreen} options={{ headerShown: false }} />
-			<AppStack.Screen
-				name="Tabs"
-				component={TabNavigation}
-				options={{
-					headerShown: false,
+		<NotificationContextProvider>
+			<AppStack.Navigator
+				screenOptions={{
+					presentation: 'modal',
 				}}
-			/>
-			<AppStack.Screen
-				name="Submit"
-				component={SubmitScreen}
-				options={{
-					header: () => <Header title="Rego" back />,
-				}}
-			/>
-			<AppStack.Screen
-				name="Notices"
-				component={SettingsScreen}
-				options={{
-					header: () => <Header title="Notices" back />,
-				}}
-			/>
-			<AppStack.Screen
-				name="Timeline"
-				component={TimelineScreen}
-				options={{
-					header: () => <Header title="Timeline" back />,
-				}}
-			/>
-			<AppStack.Screen
-				name="Settings"
-				component={SettingsScreen}
-				options={{
-					header: () => <Header title="Settings" back />,
-				}}
-			/>
-		</AppStack.Navigator>
+				initialRouteName={user?.data ? 'Tabs' : 'Onboarding'}
+			>
+				<AppStack.Screen name="Onboarding" component={OnboardingScreen} options={{ headerShown: false }} />
+				<AppStack.Screen
+					name="Tabs"
+					component={TabNavigation}
+					options={{
+						headerShown: false,
+					}}
+				/>
+				<AppStack.Screen
+					name="Submit"
+					component={SubmitScreen}
+					options={{
+						header: () => <Header title="Rego" back />,
+					}}
+				/>
+				<AppStack.Screen
+					name="Notices"
+					component={NoticesScreen}
+					options={{
+						header: () => <Header title="Notices" back />,
+					}}
+				/>
+				<AppStack.Screen
+					name="Timeline"
+					component={TimelineScreen}
+					options={{
+						header: () => <Header title="Timeline" back />,
+					}}
+				/>
+				<AppStack.Screen
+					name="Settings"
+					component={SettingsScreen}
+					options={{
+						header: () => <Header title="Settings" back />,
+					}}
+				/>
+			</AppStack.Navigator>
+		</NotificationContextProvider>
 	);
 };
 

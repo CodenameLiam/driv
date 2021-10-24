@@ -4,7 +4,8 @@ import { BodyFont, TitleFont } from 'Theme/Fonts';
 import Responsive from 'Utils/Responsive';
 
 export const Container = styled.View`
-	padding: ${Responsive.hpx(2)};
+	padding: 0px ${Responsive.hpx(2)};
+	flex: 1;
 `;
 
 const pictureDimensions = Responsive.hpx(7);
