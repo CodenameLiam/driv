@@ -76,6 +76,8 @@ export const SubTypeButtonContainer = styled.View`
 
 export const SubTypeButton = styled.TouchableOpacity<TypeButtonProps>`
 	padding: ${Responsive.hpx(1.5)};
+	flex-grow: 1;
+	align-items: center;
 	margin: ${Responsive.hpx(0.5)};
 	border-radius: ${Responsive.hpx(1)};
 	background-color: ${({ colour }) => colour};

@@ -5,7 +5,7 @@ export type AppParams = {
 	Onboarding: undefined;
 	Tabs: undefined;
 	Submit: undefined;
-	Settings: undefined;
+	SettingsNav: undefined;
 	Notices: undefined;
 	Timeline: undefined;
 };

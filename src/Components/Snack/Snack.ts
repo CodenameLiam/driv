@@ -1,5 +1,13 @@
 import Toast from 'react-native-toast-message';
 
+const info = (message: string): void => {
+	Toast.show({
+		type: 'info',
+		text1: message,
+		position: 'bottom',
+	});
+};
+
 const error = (message: string): void => {
 	Toast.show({
 		type: 'error',
@@ -17,6 +25,7 @@ const success = (message: string): void => {
 };
 
 export const Snack = {
+	info,
 	error,
 	success,
 };

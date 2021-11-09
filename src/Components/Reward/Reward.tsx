@@ -7,6 +7,7 @@ import Responsive from 'Utils/Responsive';
 import Colours from 'Theme/Colours';
 import { Linking } from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { Snack } from 'Components/Snack/Snack';
 
 interface RewardProps {
 	reward: RewardObject;

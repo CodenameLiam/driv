@@ -26,15 +26,16 @@ export const Interactions: InteractionAttribute[] = [
 		subType: InteractionPositive.Patient,
 		text: 'Patient',
 	},
-	{
-		type: InteractionType.Positive,
-		subType: InteractionPositive.Polite,
-		text: 'Polite',
-	},
+
 	{
 		type: InteractionType.Positive,
 		subType: InteractionPositive.WellMannered,
 		text: 'Well Mannered',
+	},
+	{
+		type: InteractionType.Positive,
+		subType: InteractionPositive.Polite,
+		text: 'Polite',
 	},
 	{
 		type: InteractionType.Negative,

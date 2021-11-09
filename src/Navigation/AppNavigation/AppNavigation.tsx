@@ -10,6 +10,7 @@ import SettingsScreen from 'Screens/Settings/SettingsScreen';
 import TimelineScreen from 'Screens/Timeline/TimelineScreen';
 import NotificationContextProvider from 'Context/NotificationContext';
 import NoticesScreen from 'Screens/Notices/NoticesScreen';
+import SettingsNavigation from 'Navigation/SettingsNavigation/SettingsNavigation';
 
 const AppStack = createNativeStackNavigator<AppParams>();
 
@@ -54,10 +55,10 @@ const AppNavigation: FC = () => {
 					}}
 				/>
 				<AppStack.Screen
-					name="Settings"
-					component={SettingsScreen}
+					name="SettingsNav"
+					component={SettingsNavigation}
 					options={{
-						header: () => <Header title="Settings" back />,
+						headerShown: false,
 					}}
 				/>
 			</AppStack.Navigator>

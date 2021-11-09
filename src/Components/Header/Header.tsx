@@ -44,7 +44,7 @@ const Header: FC<HeaderProps> = ({ title, back }) => {
 					<Styles.IconContainer onPress={() => navigation.navigate('Timeline')}>
 						<Icon family="feather" name="clock" size={Responsive.h(3)} colour={Colours.black} />
 					</Styles.IconContainer>
-					<Styles.IconContainer onPress={() => navigation.navigate('Settings')}>
+					<Styles.IconContainer onPress={() => navigation.navigate('SettingsNav')}>
 						<Icon family="feather" name="settings" size={Responsive.h(3)} colour={Colours.black} />
 					</Styles.IconContainer>
 				</Fragment>

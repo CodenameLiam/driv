@@ -164,7 +164,10 @@ const SubmitScreen: FC = () => {
 										: Colours.Greys.GREY1
 								}
 							>
-								<BodyFont colour={subTypes[interaction.subType] ? Colours.white : Colours.black}>
+								<BodyFont
+									maxFontSizeMultiplier={1}
+									colour={subTypes[interaction.subType] ? Colours.white : Colours.black}
+								>
 									{interaction.text}
 								</BodyFont>
 							</Styles.SubTypeButton>

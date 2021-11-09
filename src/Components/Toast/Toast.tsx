@@ -50,6 +50,12 @@ export const ToastConfig = {
 			<ToastText colour={Colours.white}>{text1}</ToastText>
 		</ToastContainer>
 	),
+	info: ({ text1, ...rest }: BaseToastProps) => (
+		<ToastContainer colour={Colours.black}>
+			<ToastHighlight colour={Colours.blue} />
+			<ToastText colour={Colours.white}>{text1}</ToastText>
+		</ToastContainer>
+	),
 };
 
 export default ToastConfig;
