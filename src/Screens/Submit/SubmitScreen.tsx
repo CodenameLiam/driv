@@ -178,8 +178,8 @@ const SubmitScreen: FC = () => {
 						<Styles.TypeButtonFont colour={Colours.white}>Submit</Styles.TypeButtonFont>
 					</Styles.SubmitButton>
 				</Styles.Container>
-				<Toast config={ToastConfig} />
 			</ScrollView>
+			<Toast config={ToastConfig} />
 		</SafeAreaView>
 	);
 };
