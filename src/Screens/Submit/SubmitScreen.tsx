@@ -178,7 +178,7 @@ const SubmitScreen: FC = () => {
 						<Styles.TypeButtonFont colour={Colours.white}>Submit</Styles.TypeButtonFont>
 					</Styles.SubmitButton>
 				</Styles.Container>
-				<Toast ref={ref => Toast.setRef(ref)} config={ToastConfig} />
+				<Toast config={ToastConfig} />
 			</ScrollView>
 		</SafeAreaView>
 	);
