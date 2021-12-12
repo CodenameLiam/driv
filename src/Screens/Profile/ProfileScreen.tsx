@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/core';
 import { useName, useUser } from 'Context/AppContext';
 import { TabNavProps } from 'Navigation/AppNavigation/AppNavigation.params';
 import React, { FC, Fragment, useEffect, useMemo, useState } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { BodyFont } from 'Theme/Fonts';
 import * as Styles from './ProfileScreen.styles';
 import Icon from 'Components/Icon/Icon';
@@ -135,7 +135,7 @@ const ProfileScreen: FC = () => {
 		<ScrollView>
 			<Styles.Container>
 				<Styles.InfoContainer>
-					<TouchableOpacity>
+					<View>
 						{user?.user?.photoURL ? (
 							<Styles.Picture source={{ uri: user.user.photoURL }} />
 						) : (
@@ -148,7 +148,7 @@ const ProfileScreen: FC = () => {
 								/>
 							</Styles.PicturePlaceholder>
 						)}
-					</TouchableOpacity>
+					</View>
 					<Styles.InfoTextContainer>
 						<Styles.Name>{user?.user?.displayName ?? name}</Styles.Name>
 						<Styles.Stars>

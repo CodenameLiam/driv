@@ -25,7 +25,7 @@ const notifications = {
 const rewards = {
 	get: async () => {
 		const _rewards: RewardObject[] = [];
-		const docsRef = await rewardsRef.get();
+		const docsRef = await rewardsRef.where('active', '==', true).get();
 		docsRef.forEach(reward => {
 			_rewards.push(reward.data() as RewardObject);
 		});

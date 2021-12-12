@@ -6,16 +6,27 @@ import SubmitScreen from 'Screens/Submit/SubmitScreen';
 import { useUser } from 'Context/AppContext';
 import OnboardingScreen from 'Screens/OnboardingScreen/OnboardingScreen';
 import Header from 'Components/Header/Header';
-import SettingsScreen from 'Screens/Settings/SettingsScreen';
 import TimelineScreen from 'Screens/Timeline/TimelineScreen';
 import NotificationContextProvider from 'Context/NotificationContext';
 import NoticesScreen from 'Screens/Notices/NoticesScreen';
 import SettingsNavigation from 'Navigation/SettingsNavigation/SettingsNavigation';
+import { AuthState } from 'Reducers/AuthReducer';
+import VerifyScreen from 'Screens/Verify/VerifyScreen';
+
+const getInitialRoute = (user: AuthState): keyof AppParams => {
+	if (!user?.user?.emailVerified) {
+		return 'Verify';
+	} else if (!user.data) {
+		return 'Onboarding';
+	}
+	return 'Tabs';
+};
 
 const AppStack = createNativeStackNavigator<AppParams>();
 
 const AppNavigation: FC = () => {
 	const [user] = useUser();
+	const initialRoute = getInitialRoute(user);
 
 	return (
 		<NotificationContextProvider>
@@ -23,8 +34,9 @@ const AppNavigation: FC = () => {
 				screenOptions={{
 					presentation: 'modal',
 				}}
-				initialRouteName={user?.data ? 'Tabs' : 'Onboarding'}
+				initialRouteName={initialRoute}
 			>
+				<AppStack.Screen name="Verify" component={VerifyScreen} options={{ headerShown: false }} />
 				<AppStack.Screen name="Onboarding" component={OnboardingScreen} options={{ headerShown: false }} />
 				<AppStack.Screen
 					name="Tabs"

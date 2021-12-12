@@ -31,6 +31,7 @@ const Reward: FC<RewardProps> = ({ reward }) => {
 		if (supported) {
 			Linking.openURL(url);
 		} else {
+			Snack.error('Could not open reward link');
 			console.error("Don't know how to open URI: " + url);
 		}
 	};

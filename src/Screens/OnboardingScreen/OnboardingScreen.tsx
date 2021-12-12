@@ -41,14 +41,14 @@ const OnboardingScreen: FC = () => {
 		<SafeAreaView style={Full}>
 			<ScrollView contentContainerStyle={Full} keyboardShouldPersistTaps="handled" scrollEnabled={false}>
 				<Styles.Container>
-					<Styles.BackContainer onPress={logout}>
+					{/* <Styles.BackContainer onPress={logout}>
 						<Icon family="feather" name={'chevron-left'} size={Responsive.h(4)} colour={Colours.black} />
-					</Styles.BackContainer>
+					</Styles.BackContainer> */}
 					<Styles.TitleContainer>
 						<TitleFont>Hello, {user?.user?.displayName ?? name}</TitleFont>
 						<Styles.SubTitleFont>And welcome to Drive</Styles.SubTitleFont>
 					</Styles.TitleContainer>
-					<Styles.SubTitleFont>To begin, enter your vehciles registration number below</Styles.SubTitleFont>
+					<Styles.SubTitleFont>To begin, enter your vehicles registration number below</Styles.SubTitleFont>
 					<Styles.InputContainer>
 						<Styles.Input
 							autoCapitalize="characters"

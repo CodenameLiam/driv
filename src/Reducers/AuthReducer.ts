@@ -17,6 +17,10 @@ export type AuthAction =
 			type: 'LOGOUT';
 	  }
 	| {
+			type: 'USER';
+			payload: FirebaseAuthTypes.User;
+	  }
+	| {
 			type: 'DATA';
 			payload: UserData;
 	  };
@@ -25,6 +29,7 @@ export type AuthAction =
 export const actions = {
 	logout: (): AuthAction => ({ type: 'LOGOUT' }),
 	login: (user: FirebaseAuthTypes.User, data?: UserData): AuthAction => ({ type: 'LOGIN', payload: { user, data } }),
+	user: (user: FirebaseAuthTypes.User): AuthAction => ({ type: 'USER', payload: user }),
 	data: (data: UserData): AuthAction => ({ type: 'DATA', payload: data }),
 };
 
@@ -38,6 +43,8 @@ const reducer = (state: AuthState, action: AuthAction): AuthState => {
 			auth().signOut();
 			console.log(`Logging out of ${state?.user?.email}`);
 			return null;
+		case 'USER':
+			return { ...state, user: action.payload };
 		case 'DATA':
 			return { ...state, data: action.payload };
 		default:

@@ -10,21 +10,46 @@ import AuthReducer from 'Reducers/AuthReducer';
 import Colours from 'Theme/Colours';
 import { Full } from 'Theme/Global';
 import Responsive from 'Utils/Responsive';
+import { Linking } from 'react-native';
 import * as Styles from './SettingsScreen.styles';
+import { useNavigation } from '@react-navigation/native';
+import { SettingsNavProps } from 'Navigation/SettingsNavigation/SettingsNavigation.params';
+import auth from '@react-native-firebase/auth';
 
 const ChevronRight: FC = () => (
 	<Icon family="feather" name={'chevron-right'} size={Responsive.h(3)} colour={Colours.black} />
 );
 
 const SettingsScreen: FC = () => {
+	const navigation = useNavigation<SettingsNavProps>();
 	const [user, dispatchUser] = useUser();
 
 	const logout = (): void => {
 		dispatchUser(AuthReducer.actions.logout());
 	};
 
-	const comingSoon = (): void => {
-		Snack.info('Coming soon');
+	const handleResetPassword = async (): Promise<void> => {
+		try {
+			if (user?.user?.email) {
+				await auth().sendPasswordResetEmail(user.user.email);
+				Snack.success(`Password reset email sent to ${user.user.email}`);
+			} else {
+				throw new Error();
+			}
+		} catch (error) {
+			Snack.error('Could send reset password email');
+		}
+	};
+
+	const handlePrivacy = async (): Promise<void> => {
+		const privacyURL = 'https://driv.netlify.app/privacy-policy';
+		const supported = await Linking.canOpenURL(privacyURL);
+		if (supported) {
+			Linking.openURL(privacyURL);
+		} else {
+			Snack.error('Could not open link');
+			console.error("Don't know how to open URI: " + privacyURL);
+		}
 	};
 
 	return (
@@ -51,33 +76,33 @@ const SettingsScreen: FC = () => {
 				</Styles.InfoContainer>
 
 				<Styles.SettingsGroup>
-					<Styles.SettingsButton onPress={comingSoon}>
+					<Styles.SettingsButton onPress={() => navigation.navigate('EditProfile')}>
 						<Styles.SettingsFont>Edit Profile</Styles.SettingsFont>
 						<ChevronRight />
 					</Styles.SettingsButton>
-					<Styles.SettingsButton onPress={comingSoon}>
+					<Styles.SettingsButton onPress={handleResetPassword}>
 						<Styles.SettingsFont>Change Password</Styles.SettingsFont>
 						<ChevronRight />
 					</Styles.SettingsButton>
-					<Styles.SettingsButton onPress={comingSoon}>
+					{/* <Styles.SettingsButton onPress={comingSoon}>
 						<Styles.SettingsFont>History</Styles.SettingsFont>
 						<ChevronRight />
 					</Styles.SettingsButton>
 					<Styles.SettingsButton onPress={comingSoon}>
 						<Styles.SettingsFont>Feedback</Styles.SettingsFont>
 						<ChevronRight />
-					</Styles.SettingsButton>
+					</Styles.SettingsButton> */}
 				</Styles.SettingsGroup>
 				<Styles.SettingsGroup>
-					<Styles.SettingsButton onPress={comingSoon}>
+					<Styles.SettingsButton onPress={handlePrivacy}>
 						<Styles.SettingsFont>About Us</Styles.SettingsFont>
 						<ChevronRight />
 					</Styles.SettingsButton>
-					<Styles.SettingsButton onPress={comingSoon}>
+					<Styles.SettingsButton onPress={handlePrivacy}>
 						<Styles.SettingsFont>Privacy Policy</Styles.SettingsFont>
 						<ChevronRight />
 					</Styles.SettingsButton>
-					<Styles.SettingsButton onPress={comingSoon}>
+					<Styles.SettingsButton onPress={handlePrivacy}>
 						<Styles.SettingsFont>Terms and Conditions</Styles.SettingsFont>
 						<ChevronRight />
 					</Styles.SettingsButton>

@@ -8,18 +8,21 @@ import * as Styles from './Button.styles';
 interface ButtonProps extends TouchableOpacityProps {
 	text?: string;
 	fullWidth?: boolean;
+	hideGradient?: boolean;
 }
 
-const Button: FC<ButtonProps> = ({ children, text, fullWidth, ...rest }) => {
+const Button: FC<ButtonProps> = ({ children, text, hideGradient, fullWidth, ...rest }) => {
 	return (
 		<Styles.Base fullWidth={fullWidth} {...rest}>
-			<LinearGradient
-				style={[StyleSheet.absoluteFill]}
-				colors={[Colours.primary, Colours.secondary]}
-				start={{ x: 0, y: 0 }}
-				end={{ x: 1, y: 0 }}
-			/>
-			{children ?? <BodyFont colour={Colours.white}>{text}</BodyFont>}
+			{!hideGradient && (
+				<LinearGradient
+					style={[StyleSheet.absoluteFill]}
+					colors={[Colours.primary, Colours.secondary]}
+					start={{ x: 0, y: 0 }}
+					end={{ x: 1, y: 0 }}
+				/>
+			)}
+			{children ?? <BodyFont colour={hideGradient ? Colours.black : Colours.white}>{text}</BodyFont>}
 		</Styles.Base>
 	);
 };

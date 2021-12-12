@@ -2,6 +2,7 @@ import { RouteProp } from '@react-navigation/core';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 export type AppParams = {
+	Verify: undefined;
 	Onboarding: undefined;
 	Tabs: undefined;
 	Submit: undefined;
@@ -11,6 +12,7 @@ export type AppParams = {
 };
 
 // App Navigation Types
+export type VerifyNavProps = StackNavigationProp<AppParams, 'Verify'>;
 export type OnboardingNavProps = StackNavigationProp<AppParams, 'Onboarding'>;
 export type TabNavProps = StackNavigationProp<AppParams, 'Tabs'>;
 export type TabRouteProps = RouteProp<AppParams, 'Tabs'>;
